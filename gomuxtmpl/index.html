@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head> 
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+  </head>
+  <body>
+
+    <h1>Hola hijito </h1>
+    <h2>como te baila</h2>
+    <h3>Hola {{.User}}</h3> 
+    <h3>Edad : {{.Edad}}</h3>
+    <!--vars-->
+    {{ with $valor:= "mivar"}}
+
+    {{$valor}}
+    {{ end}}
+
+    <h1>usuarios</h1>
+    {{if  .Activo}}
+    <p>usuario activo</p>
+    {{else}}
+    <p>usuario inactivo</p>
+    {{end}}
+
+    {{if (and .Activo .Admin)}}
+    <p>sos admin</p>{{else}}<p>no sos admin</p>
+    {{end}}
+
+    {{if gt .Edad 4}}
+    <p>tiene mas de 4</p>
+    {{end}}
+    {{if lt .Edad 40}}
+    <p>tiene menos de 40</p>
+    {{end}}
+
+    <ul>{{range .Cursos}}
+      <li>{{.Nombre}}</li>
+      {{end}}
+    </ul>
+  </body>
+</html>
